@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const log = require('../utils/logger');
+const { addToBlacklist, isTokenBlacklisted } = require('../config/redisdb')
 
 // User Signup
 const signup = async (req, res) => {
@@ -70,17 +71,34 @@ const login = async (req, res) => {
     }
 };
 
-
-// Logout User
-const logout = (req, res) => {
+const logout = async (req, res) => {
     try {
+        const token = req.headers['authorization']?.split(' ')[1];
+
+        if (token) {
+            const decoded = jwt.decode(token);
+            const expiryInSeconds = decoded?.exp - Math.floor(Date.now() / 1000);
+            if (expiryInSeconds > 0) {
+                await addToBlacklist(token, expiryInSeconds);
+            }
+        }
+
         log.info(`User logged out successfully: ${req.user?.email}`);
-        res.status(200).json({ status: 200, message: "User logged out successfully", error: null });
+        res.status(200).json({ 
+            status: 200, 
+            message: 'User logged out successfully', 
+            error: null 
+        });
     } catch (error) {
         log.error(error.message);
-        res.status(500).json({ status: 500, message: "Internal Server Error", error: error.message });
+        res.status(500).json({ 
+            status: 500, 
+            message: 'Internal Server Error', 
+            error: error.message 
+        });
     }
 };
+
 // Retrieve All Users (Admin Only)
 const getAllUsers = async (req, res) => {
     try {
