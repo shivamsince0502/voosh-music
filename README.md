@@ -24,7 +24,7 @@ This project is a **Music Streaming API** that allows users to manage and access
 
 Before running the project, ensure you have the following installed:
 
-- Node.js (v14+)
+- Node.js
 - npm (Node Package Manager)
 - MongoDB (local or cloud-based like MongoDB Atlas)
 
@@ -63,7 +63,7 @@ Before running the project, ensure you have the following installed:
 
 ## API Endpoints
 
-Base URL: `https://voosh-music.onrender.com`
+Base URL: `https://voosh-music.onrender.com/voosh-music/`
 
 ### User Management
 - **POST /signup**: Register a new user
