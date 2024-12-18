@@ -7,7 +7,6 @@ const getAlbums = async (req, res) => {
     try {
         const { limit = 5, offset = 0, artist_id, hidden } = req.query;
 
-        // Validate query parameters
         const filter = {};
         if (artist_id) {
             const artist = await Artist.findById(artist_id);
@@ -21,7 +20,6 @@ const getAlbums = async (req, res) => {
             filter.visible = hidden === 'true';
         }
 
-        // Fetch albums with pagination
         const albums = await Album.find(filter)
             .skip(Number(offset))
             .limit(Number(limit))
@@ -74,7 +72,6 @@ const addAlbum = async (req, res) => {
     try {
         const { artistId, name, year, visible } = req.body;
 
-        // Check if the artist exists
         const artist = await Artist.findById(artistId);
         if (!artist) {
             return res.status(404).json({ status: 404, message: 'Artist not found', error: 'Invalid artist ID' });

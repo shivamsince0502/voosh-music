@@ -15,7 +15,7 @@ router.post('/artists/add-artist', authMiddleware, roleMiddleware(['admin']), ad
 router.put('/artists/:id', authMiddleware, roleMiddleware(['admin']), updateArtist);
 
 // Get an Artist by ID (Requires Authentication)
-router.get('/artists/:id', authMiddleware, getArtist);  // Changed from PUT to GET for fetching an artist
+router.get('/artists/:id', authMiddleware, getArtist); 
 
 // Delete an Artist by ID (Requires Authentication and Admin Role)
 router.delete('/artists/:id', authMiddleware, roleMiddleware(['admin']), deleteArtist);

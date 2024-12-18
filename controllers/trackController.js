@@ -49,7 +49,6 @@ const addTrack = async (req, res) => {
     try {
         const { name, duration, artist_id, album_id, hidden } = req.body;
 
-        // Check if a track with the same artist_id and album_id already exists
         const existingTrack = await Track.findOne({ artist_id, album_id, name });
         if (existingTrack) {
             return res.status(400).json({
@@ -59,7 +58,6 @@ const addTrack = async (req, res) => {
             });
         }
 
-        // Create a new track if no conflict
         const newTrack = new Track({
             track_id: uuidv4(),
             name,

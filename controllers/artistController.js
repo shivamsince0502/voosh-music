@@ -4,7 +4,6 @@ const log = require('../utils/logger');
 // Get All Artists without any filters
 const getAllArtists = async (req, res) => {
     try {
-        // Fetch all artists without any filters
         const artists = await Artist.find();
 
         log.info('Fetched all artists successfully');
@@ -30,7 +29,6 @@ const addArtist = async (req, res) => {
     try {
         const { name, grammyCount, visible } = req.body;
 
-        // Check for duplicate artist name
         const existingArtist = await Artist.findOne({ name });
         if (existingArtist) {
             log.warn(`Artist with name '${name}' already exists`);
@@ -108,7 +106,7 @@ const getArtist = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const artist = await Artist.findById(id); // Use ID-based search here
+        const artist = await Artist.findById(id); 
         if (!artist) {
             log.warn(`Artist not found with ID: '${id}'`);
             return res.status(404).json({

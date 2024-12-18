@@ -8,6 +8,6 @@ const AlbumSchema = new mongoose.Schema({
         required: true 
     },
     visible: { type: Boolean, default: true }
-}, { timestamps: true }); // Add timestamps for createdAt and updatedAt
+}, { timestamps: true }); 
 
 module.exports = mongoose.model('Album', AlbumSchema);

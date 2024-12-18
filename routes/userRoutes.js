@@ -4,15 +4,26 @@ const { authMiddleware, roleMiddleware } = require('../middleware/authMiddleware
 
 const router = express.Router();
 
-// Public Routes
-router.post('/signup', signup);
-router.post('/login', login);
+// Route for user signup(all users)
+router.post('/signup', signup); 
 
-// Protected Routes
+// Route for user login
+router.post('/login', login); 
+
+// Route for user logout
 router.get('/logout', authMiddleware, logout);
-router.get('/users', authMiddleware, roleMiddleware(['admin']), getAllUsers);
-router.delete('/users/:email', authMiddleware, roleMiddleware(['admin']), deleteUser);
-router.put('/users/update-password', authMiddleware, updatePassword);
-router.post('/users/add-user', authMiddleware, roleMiddleware(['admin']), signup);
+
+// Route to get all users (admin only)
+router.get('/users', authMiddleware, roleMiddleware(['admin']), getAllUsers); 
+
+// Route to delete a user by email (admin only)
+router.delete('/users/:email', authMiddleware, roleMiddleware(['admin']), deleteUser); 
+
+// Route to update the user's password
+router.put('/users/update-password', authMiddleware, updatePassword); 
+
+// Route for admin to add a new user (admin only)
+router.post('/users/add-user', authMiddleware, roleMiddleware(['admin']), signup); 
+
 
 module.exports = router;

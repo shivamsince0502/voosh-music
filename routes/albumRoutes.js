@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAlbums, addAlbum, updateAlbum, deleteAlbum } = require('../controllers/albumController');
-const { authMiddleware, roleMiddleware } = require('../middleware/authMiddleware');  // Update the middleware import
+const { authMiddleware, roleMiddleware } = require('../middleware/authMiddleware');  
 
 const router = express.Router();
 
