@@ -4,8 +4,7 @@
 
 This project is a **Music Streaming API** that allows users to manage and access tracks, albums, favorites, and user accounts. It provides endpoints for user authentication, track management, album management, and favorite item management. The API is built using **Node.js** with **Express.js** and supports MongoDB as the database.
 
-## Test APIs
-baseurl : https://voosh-music.onrender.com
+
 
 ## Features
 
@@ -64,122 +63,42 @@ Before running the project, ensure you have the following installed:
 
 ## API Endpoints
 
+Base URL: `https://voosh-music.onrender.com`
+
 ### User Management
-
-- **POST /signup**: Register a new user.  
-  Possible responses: `201`, `400`, `409`
-  
-- **POST /login**: Authenticate a user.  
-  Possible responses: `200`, `400`, `404`
-  
-- **GET /logout**: Logout the current user.  
-  Requires authentication.  
-  Possible responses: `200`, `400`
-  
-- **GET /users**: Retrieve all users (Admin only).  
-  Requires admin role.  
-  Possible responses: `200`, `400`, `401`
-  
-- **POST /users/add-user**: Admin adds a new user.  
-  Requires admin role.  
-  Possible responses: `201`, `400`, `401`, `403`, `409`
-  
-- **DELETE /users/:email**: Delete a user by email (Admin only).  
-  Requires admin role.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-  
-- **PUT /users/update-password**: Update user's password.  
-  Requires authentication.  
-  Possible responses: `204`, `400`, `401`, `403`, `404`
-
----
+- **POST /signup**: Register a new user
+- **POST /login**: Authenticate a user
+- **GET /logout**: Logout the current user (Requires auth)
+- **GET /users**: Get all users (Admin only)
+- **POST /users/add-user**: Admin adds a new user
+- **DELETE /users/:email**: Delete a user by email (Admin only)
+- **PUT /users/update-password**: Update user's password
 
 ### Track Management
-
-- **GET /tracks/all-tracks**: Retrieve all tracks.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-  
-- **GET /tracks/:id**: Retrieve a track by ID.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-  
-- **POST /tracks/add-track**: Add a new track.  
-  Requires authentication.  
-  Possible responses: `201`, `400`, `401`, `403`, `404`
-  
-- **PUT /tracks/:id**: Update a track by ID.  
-  Requires authentication.  
-  Possible responses: `204`, `400`, `401`, `403`, `404`
-  
-- **DELETE /tracks/:id**: Delete a track by ID.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-
----
+- **GET /tracks/all-tracks**: Get all tracks (Requires auth)
+- **GET /tracks/:id**: Get track by ID (Requires auth)
+- **POST /tracks/add-track**: Add a new track (Requires auth)
+- **PUT /tracks/:id**: Update track by ID (Requires auth)
+- **DELETE /tracks/:id**: Delete track by ID (Requires auth)
 
 ### Album Management
-
-- **GET /album/all-albums**: Retrieve all albums.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-  
-- **GET /album/:id**: Retrieve an album by ID.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-  
-- **POST /album/add-album**: Add a new album.  
-  Requires authentication and admin role.  
-  Possible responses: `201`, `400`, `401`, `403`
-  
-- **PUT /album/:id**: Update an album by ID.  
-  Requires authentication and admin role.  
-  Possible responses: `204`, `400`, `401`, `403`, `404`
-  
-- **DELETE /album/:id**: Delete an album by ID.  
-  Requires authentication and admin role.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-
----
+- **GET /album/all-albums**: Get all albums (Requires auth)
+- **GET /album/:id**: Get album by ID (Requires auth)
+- **POST /album/add-album**: Add a new album (Admin only)
+- **PUT /album/:id**: Update album by ID (Admin only)
+- **DELETE /album/:id**: Delete album by ID (Admin only)
 
 ### Artist Management
-
-- **GET /artists/all-artists**: Retrieve all artists.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`
-  
-- **GET /artists/:id**: Retrieve an artist by ID.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-  
-- **POST /artists/add-artist**: Add a new artist.  
-  Requires authentication and admin role.  
-  Possible responses: `201`, `400`, `401`
-  
-- **PUT /artists/:id**: Update an artist by ID.  
-  Requires authentication and admin role.  
-  Possible responses: `204`, `400`, `401`, `403`, `404`
-  
-- **DELETE /artists/:id**: Delete an artist by ID.  
-  Requires authentication and admin role.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-
----
+- **GET /artists/all-artists**: Get all artists (Requires auth)
+- **GET /artists/:id**: Get artist by ID (Requires auth)
+- **POST /artists/add-artist**: Add a new artist (Admin only)
+- **PUT /artists/:id**: Update artist by ID (Admin only)
+- **DELETE /artists/:id**: Delete artist by ID (Admin only)
 
 ### Favorites Management
-
-- **GET /favorites/:category**: Retrieve favorites by category.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`
-  
-- **POST /favorites/add-favorite**: Add a favorite item.  
-  Requires authentication.  
-  Possible responses: `201`, `400`, `401`, `403`, `404`
-  
-- **DELETE /favorites/remove-favorite/:id**: Remove a favorite item by ID.  
-  Requires authentication.  
-  Possible responses: `200`, `400`, `401`, `403`, `404`
-
+- **GET /favorites/:category**: Get favorites by category (Requires auth)
+- **POST /favorites/add-favorite**: Add a favorite (Requires auth)
+- **DELETE /favorites/remove-favorite/:id**: Remove a favorite by ID (Requires auth)
 
 
 
