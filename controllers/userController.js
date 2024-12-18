@@ -104,10 +104,8 @@ const getAllUsers = async (req, res) => {
     try {
         const { limit = 5, offset = 0, role } = req.query;
 
-        // Build query to filter users by role if provided
         const query = role ? { role: role.toLowerCase() } : {};
 
-        // Fetch users with pagination
         const users = await User.find(query)
             .skip(parseInt(offset))
             .limit(parseInt(limit));
@@ -131,9 +129,9 @@ const getAllUsers = async (req, res) => {
 };
 
 
+//delete a user
 const deleteUser = async (req, res) => {
     try {
-        // Check if the authenticated user is an admin
         if (req.user.role !== 'admin') {
             log.warn(`Unauthorized delete attempt by user ${req.user.email}`);
             return res.status(403).json({
@@ -143,7 +141,7 @@ const deleteUser = async (req, res) => {
             });
         }
 
-        const { email } = req.params;  // Get email from request parameters
+        const { email } = req.params;  
         const user = await User.findOneAndDelete({ email });
 
         if (!user) {

@@ -1,6 +1,5 @@
 const { createClient } = require('redis');
 
-// Redis Client Configuration
 const client = createClient({
     username: 'default',
     password: 'cw3AGaxDAPvl8RomRABLdueaojplYoYy',
@@ -22,12 +21,10 @@ client.on('error', (err) => console.error('Redis Client Error:', err));
     }
 })();
 
-// Utility Functions
-
 const addToBlacklist = async (token, expiryInSeconds) => {
     try {
         await client.set(`blacklist:${token}`, 'true', {
-            EX: expiryInSeconds // Set token expiration time
+            EX: expiryInSeconds 
         });
         console.log(`Token blacklisted: ${token}`);
     } catch (error) {
@@ -39,12 +36,11 @@ const addToBlacklist = async (token, expiryInSeconds) => {
 const isTokenBlacklisted = async (token) => {
     try {
         const result = await client.get(`blacklist:${token}`);
-        return result === 'true'; // Returns true if token is blacklisted
+        return result === 'true'; 
     } catch (error) {
         console.error('Error checking token in blacklist:', error);
         throw error;
     }
 };
 
-// Exporting Redis Utilities
 module.exports = { addToBlacklist, isTokenBlacklisted };
