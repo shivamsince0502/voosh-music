@@ -17,7 +17,7 @@ This project is a **Music Streaming API** that allows users to manage and access
 ## Tech Stack
 
 - **Backend Framework**: Node.js with Express.js
-- **Database**: MongoDB atlas
+- **Database**: MongoDB atlas, Redis
 - **Authentication**: JSON Web Tokens (JWT)
 
 ## Prerequisites
