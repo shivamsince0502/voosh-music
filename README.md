@@ -26,7 +26,8 @@ Before running the project, ensure you have the following installed:
 
 - Node.js
 - npm (Node Package Manager)
-- MongoDB (local or cloud-based like MongoDB Atlas)
+- MongoDB ( MongoDB Atlas)
+- Redis (cloud)
 
 ## Installation and Setup
 
@@ -105,6 +106,9 @@ Base URL: `https://voosh-music.onrender.com/voosh-music/`
 ## Project Structure
 
 ```
+├── config
+│   ├── db.js            # MongoDB configuration
+│   ├── redisdb.js       # Redis configuration
 ├── controllers
 │   ├── albumController.js
 │   ├── artistController.js
@@ -128,6 +132,7 @@ Base URL: `https://voosh-music.onrender.com/voosh-music/`
 ├── server.js
 ├── package.json
 └── README.md
+
 ```
 
 ## License
